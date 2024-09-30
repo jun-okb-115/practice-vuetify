@@ -1,0 +1,27 @@
+name: Dummy CI
+
+# プルリクエストやプッシュ時にトリガーされる
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # リポジトリをチェックアウト
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      # ダミーテストを実行
+      - name: Run dummy tests
+        run: |
+          echo "Running dummy tests..."
+          echo "Test 1: Passed"
+          echo "Test 2: Passed"
+          echo "All tests passed successfully!"
