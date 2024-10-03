@@ -19,10 +19,10 @@ jobs:
       - name: echo
         run: | 
           echo ${{ github.actor }} 
-          echo ${{ steps.metadata.outputs }}
+          echo ${{ steps.metadata.outputs.update-type }}
 
       - name: Enable auto-merge for Dependabot PRs
-        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' }}
+        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-minor' }}
         run: gh pr comment $PR_NUMBER -b "@dependabot merge"
         env:
           PR_NUMBER: ${{ github.event.number }}
