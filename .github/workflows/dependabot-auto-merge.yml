@@ -15,8 +15,11 @@ jobs:
         uses: dependabot/fetch-metadata@v1.1.1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+          
       - name: echo
-        run: echo github.actor
+        run: | 
+          echo ${{ github.actor }} 
+          echo ${{ steps.metadata.outputs }}
 
       - name: Enable auto-merge for Dependabot PRs
         if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' }}
